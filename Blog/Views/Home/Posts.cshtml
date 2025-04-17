@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Blog.Models.Entities.Post>
+
+@{
+	ViewData["Title"] = "Posts";
+}
+
+<div class="text-center">
+	<h1 class="display-4">Posts</h1>
+	<table>
+	@foreach(var post in Model)
+	{
+		<tr>
+			<td>@post.Title</td>
+		</tr>
+		<tr>
+			<td>@post.Content</td>
+		</tr>
+		<tr>
+			<td>@post.Title</td>
+		</tr>
+	}
+	</table>
+</div>
