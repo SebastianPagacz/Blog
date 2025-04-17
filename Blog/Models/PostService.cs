@@ -1,4 +1,5 @@
-﻿using Blog.Models.Entities;
+﻿using System.Data;
+using Blog.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 namespace Blog.Models;
@@ -33,18 +34,27 @@ public class PostService
     {
         return await _context.Posts
             .Where(p => p.IsPublic == true)
+            .Include(p => p.Category)
             .ToListAsync();
     }
 
     public async Task<Post> GetPostById(int id)
     {
-        return await _context.Posts.FindAsync(id);
+        var existingPost = await _context.Posts.FindAsync(id);
+
+        if (existingPost != null && existingPost.IsPublic == true) 
+        {
+            return existingPost;
+        }
+        throw new MissingMemberException();
     }
 
     public async Task<List<Post>> GetPostsByCategory(int categoryId)
     {
         return await _context.Posts
             .Where(p => p.CategoryId == categoryId)
+            .Where(p => p.IsPublic == true)
+            .Include(p => p.Category)
             .OrderByDescending(p => p.CreatedAt)
             .ToListAsync();
     }
@@ -119,6 +129,7 @@ public class PostService
         return await _context.Posts
             .Where(p => p.Title.Contains(keyword))
             .OrderByDescending(p => p.CreatedAt)
+            .Include(p => p.Category)
             .ToListAsync();
     }
 }
