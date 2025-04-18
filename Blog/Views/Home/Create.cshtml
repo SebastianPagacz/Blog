@@ -1,0 +1,35 @@
+﻿@model Blog.Models.ViewModels.CreatePostViewModel
+@{
+	ViewData["Title"] = "AddNewPost";
+}
+<div class="text-center">
+<h1 calss="display-4">Add new post</h1>
+
+<form asp-action="Create">
+	<div class="form-group">
+		<label asp-for="Title" class="control-label"></label>
+		<input asp-for="Title" class="form-control" />
+	</div>
+	<div class="form-group">
+		<label asp-for="Content" class="control-label"></label>
+		<textarea asp-for="Content" class="form-control" rows="5"></textarea>
+	</div>
+	<div class="form-group">
+		<label asp-for="Slug" class="control-label"></label>
+		<input asp-for="Slug" class="form-control" />
+	</div>
+	<div class="form-group">
+		<label asp-for="CategoryId"></label>
+			<select asp-for="CategoryId" class="form-control" asp-items="@(new SelectList(Model?.Categories, "Id", "Name"))">
+				<option value="">-- Select Category --</option>
+		</select>
+	</div>
+	<div class="form-gorup">
+			<label asp-for="IsPublic" class="form-check-label"></label>
+			<input type="checkbox" asp-for="IsPublic"/>
+	</div><br />
+	<div class="form-group">
+		<input type="submit" value="Create" class="btn btn-primary"/>
+	</div>
+</form>
+</div>

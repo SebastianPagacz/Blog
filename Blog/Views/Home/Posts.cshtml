@@ -6,18 +6,21 @@
 
 <div class="text-center">
 	<h1 class="display-4">Posts</h1>
-	<table>
 	@foreach(var post in Model)
 	{
-		<tr>
-			<td>@post.Title</td>
-		</tr>
-		<tr>
-			<td>@post.Content</td>
-		</tr>
-		<tr>
-			<td>@post.Title</td>
-		</tr>
+		@if(post.IsPublic)
+		{
+			<div class="list-group">
+				<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+					<div class="d-flex w-100 justify-content-between">
+						<h5 class="mb-1">@post.Title</h5>
+						<small>@DateOnly.FromDateTime(@post.CreatedAt)</small>
+					</div>
+					<p class="mb-1">@post.Content</p>
+					<small>@post.Category.Name</small>
+				</a>
+			</div>
+			<br />
+		}
 	}
-	</table>
 </div>

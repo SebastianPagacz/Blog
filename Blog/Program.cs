@@ -12,6 +12,8 @@ namespace Blog
             builder.Services.AddDbContext<BloggingContext>(
                 options => options.UseSqlServer(builder.Configuration.GetConnectionString("BlogDb")));
 
+            builder.Services.AddScoped<PostService>();
+            builder.Services.AddScoped<CategoryService>();
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();

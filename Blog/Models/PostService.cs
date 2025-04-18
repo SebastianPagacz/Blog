@@ -13,7 +13,7 @@ public class PostService
     }
     
     // Create operations
-    public async Task CreatePostAsync(string title, string content, string slug, int categoryId)
+    public async Task CreatePostAsync(string title, string content, string slug, bool isPublic, int categoryId)
     {
         var newPost = new Post
         {
@@ -21,7 +21,8 @@ public class PostService
             Content = content,
             CreatedAt = DateTime.Now,
             Slug = slug,
-            CategoryId = categoryId
+            CategoryId = categoryId,
+            IsPublic = isPublic
         };
 
         _context.Posts.Add(newPost);
