@@ -1,27 +1,44 @@
 ﻿@model IEnumerable<Blog.Models.Entities.Post>
 
 @{
-	ViewData["Title"] = "Posts";
+    ViewData["Title"] = "Posts";
+    int postCount = 0;
 }
 <h1 class="display-4">Posts</h1>
 <div class="blog-post-body">
-	@foreach(var post in Model)
-	{
-		@if(post.IsPublic)
-		{
-                <div class="blog-post-item">
-                    <a class="blog-post-link">
-                        <div class="blog-post-image">
-                            <img class="blog-post-photo" src="~/images/jockey.png" alt="jockey">
-                        </div>
-                        <div class="blog-post-title-div">
-                            <h1 class="blog-post-title">@post.Title</h1>
-                        </div>
-                        <div class="blog-post-date-div">
-                            <p class="blog-post-date">@DateOnly.FromDateTime(@post.CreatedAt)</p>
-                        </div>
-                    </a>
-                </div>
-		}
-	}
+    @foreach(var post in Model)
+    {
+        @if(post.IsPublic)
+        {
+            @if(postCount % 3 == 0)
+            {
+                @:<div class="row">
+            }
+            <div class="blog-post-item">
+                <a class="blog-post-link">
+                    <div class="blog-post-image">
+                        <img class="blog-post-photo" src="~/images/jockey.png" alt="jockey">
+                    </div>
+                    <div class="blog-post-title-div">
+                        <h1 class="blog-post-title">@post.Title</h1>
+                    </div>
+                    <div class="blog-post-date-div">
+                        <p class="blog-post-date">@DateOnly.FromDateTime(@post.CreatedAt)</p>
+                    </div>
+                    <div class="blog-post-date-div">
+                        <p class="blog-post-date">@post.Category.Name</p>
+                    </div>
+                </a>
+            </div>
+            postCount++;
+            if (postCount % 3 == 0)
+            {
+                @:</div>
+            }
+        }
+    }
+    @if (postCount % 3 != 0)
+    {
+        @:</div>
+    }
 </div>

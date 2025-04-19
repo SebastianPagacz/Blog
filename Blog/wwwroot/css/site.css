@@ -2,7 +2,6 @@
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-weight: 500;
-    font-style: normal;
 }
 
 * {
@@ -61,32 +60,27 @@ header {
     display: inline;
 }
 
-.menu-item {
-    display: inline;
-}
 
 .menu-link {
-    margin: 0px 10px 0px 10px
+    margin: 0px 10px 0px 10px;
+    color: black;
+    text-decoration: none;
+    transition-property: color;
+    transition-duration: 0.2s;
 }
-
-    .menu-link:link {
-        color: black;
-        text-decoration: none;
-        transition: color 0.2s;
-    }
-
-    .menu-link:hover {
-        color: #4e4f4f;
-        text-decoration: none;
-    }
 
     .menu-link:visited {
         color: black;
         text-decoration: none;
     }
 
+    .menu-link:hover {
+        color: #0303fc;
+        text-decoration: none;
+    }
+
     .menu-link:active {
-        color: rgb(89, 89, 89)4f;
+        color: #1f1ff2;
         text-decoration: none;
     }
 
@@ -94,7 +88,7 @@ header {
 main {
     font-family: montserrat;
     width: auto;
-    height: 78vh;
+    min-height: 78vh;
     background-color: #e8eaeb;
     justify-items: center;
 }
@@ -127,6 +121,7 @@ footer {
     align-items: center;
     padding: 20px;
     display: flex;
+    flex-wrap: wrap;
 }
 
 .blog-post-item {
@@ -140,7 +135,7 @@ footer {
 
 .blog-post-image {
     border-radius: 8px 8px 0 0;
-    height: 70%;
+    height: 60%;
     width: 100%;
     margin: 0;
 }
@@ -190,3 +185,73 @@ footer {
         color: #4e4f4f;
         transition: color 0.3s;
     }
+
+.row {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+}
+.col-md-4 {
+    width: calc(33.33% - 20px); /* Przy za³o¿eniu marginesów miêdzy postami */
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+    .col-md-4:nth-child(3n) {
+        margin-right: 0; /* Usuwa margines z prawej co trzeciego elementu */
+    }
+
+.create-form-body{
+    height: 50vh;
+    width: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 30px;
+}
+.control-label{
+    display: block;
+    justify-content: center;
+    align-items: baseline;
+}
+.create-button {
+    background-color: #0303fc;
+    width: 10vh;
+    height: 5vh;
+    border-radius: 16px;
+    font-weight: 500;
+    box-shadow: none;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    border: 0;
+    color: white;
+    margin-top: 10px;
+}
+    .create-button:hover {
+        background-color: #1f1ff2;
+        cursor: pointer;
+    }
+.create-title-box{
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.form-control{
+    width: 40vh;
+    height: 4vh;
+}
+.form-control-content {
+    width: 40vh;
+    resize: none;
+}
+.control-label{
+    padding: 5px;
+    font-size: 20px;
+}
+
+.public-checkbox{
+    width: 3vh;
+    height: 3vh;
+    cursor: pointer;
+}

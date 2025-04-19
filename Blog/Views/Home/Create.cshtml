@@ -2,34 +2,33 @@
 @{
 	ViewData["Title"] = "AddNewPost";
 }
-<div class="text-center">
-<h1 calss="display-4">Add new post</h1>
+<div class="create-title-box">
+	<h1 calss="create-title">Add a new post</h1>
+</div>
 
+<div class="create-form-body">
 <form asp-action="Create">
-	<div class="form-group">
+
 		<label asp-for="Title" class="control-label"></label>
 		<input asp-for="Title" class="form-control" />
-	</div>
-	<div class="form-group">
+
 		<label asp-for="Content" class="control-label"></label>
-		<textarea asp-for="Content" class="form-control" rows="5"></textarea>
-	</div>
-	<div class="form-group">
+		<textarea asp-for="Content" class="form-control-content" rows="5"></textarea>
+
+
 		<label asp-for="Slug" class="control-label"></label>
-		<input asp-for="Slug" class="form-control" />
-	</div>
-	<div class="form-group">
-		<label asp-for="CategoryId"></label>
+		<input asp-for="Slug" class="form-control"/>
+
+
+		<label asp-for="CategoryId" class="control-label"></label>
 			<select asp-for="CategoryId" class="form-control" asp-items="@(new SelectList(Model?.Categories, "Id", "Name"))">
 				<option value="">-- Select Category --</option>
 		</select>
-	</div>
-	<div class="form-gorup">
-			<label asp-for="IsPublic" class="form-check-label"></label>
-			<input type="checkbox" asp-for="IsPublic"/>
-	</div><br />
-	<div class="form-group">
-		<input type="submit" value="Create" class="btn btn-primary"/>
-	</div>
+
+			<label asp-for="IsPublic" class="control-label"></label>
+			<input type="checkbox" asp-for="IsPublic" class="public-checkbox"/><br />
+
+		<input type="submit" value="Create" class="create-button"/>
+
 </form>
 </div>
