@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿@* <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -51,5 +51,41 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+ *@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>@ViewData["Title"] - Blog</title>
+</head>
+<body>
+    <header>
+        <div class="menu">
+            <div class="site-logo">
+            </div>
+            <div class="menu-link-container">
+                <div class="menu-item"><a class="menu-link" asp-controller="Home" asp-action="Index">Home</a></div>
+                <div class="menu-item"><a class="menu-link" asp-controller="Home" asp-action="Posts">Posts</a></div>
+                <div class="menu-item"><a class="menu-link" asp-controller="Home" asp-action="Create">Create Post</a></div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    <footer>
+        <div class="footer-box">
+            <a class="footer-copy">&copy; Sebastian Pagacz 2025</a>
+        </div>
+    </footer>
 </body>
 </html>

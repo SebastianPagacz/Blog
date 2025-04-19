@@ -3,24 +3,25 @@
 @{
 	ViewData["Title"] = "Posts";
 }
-
-<div class="text-center">
-	<h1 class="display-4">Posts</h1>
+<h1 class="display-4">Posts</h1>
+<div class="blog-post-body">
 	@foreach(var post in Model)
 	{
 		@if(post.IsPublic)
 		{
-			<div class="list-group">
-				<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-					<div class="d-flex w-100 justify-content-between">
-						<h5 class="mb-1">@post.Title</h5>
-						<small>@DateOnly.FromDateTime(@post.CreatedAt)</small>
-					</div>
-					<p class="mb-1">@post.Content</p>
-					<small>@post.Category.Name</small>
-				</a>
-			</div>
-			<br />
+                <div class="blog-post-item">
+                    <a class="blog-post-link">
+                        <div class="blog-post-image">
+                            <img class="blog-post-photo" src="~/images/jockey.png" alt="jockey">
+                        </div>
+                        <div class="blog-post-title-div">
+                            <h1 class="blog-post-title">@post.Title</h1>
+                        </div>
+                        <div class="blog-post-date-div">
+                            <p class="blog-post-date">@DateOnly.FromDateTime(@post.CreatedAt)</p>
+                        </div>
+                    </a>
+                </div>
 		}
 	}
 </div>
