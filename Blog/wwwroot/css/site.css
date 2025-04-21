@@ -69,6 +69,20 @@ header {
     transition-duration: 0.2s;
 }
 
+.menu-link-admin {
+    margin: 0px 10px 0px 10px;
+    color: black;
+    text-decoration: none;
+    transition-property: color;
+    transition-duration: 0.2s;
+    float: right;
+}
+
+.menu-link-admin:hover {
+    color: #0303fc;
+    text-decoration: none;
+}
+
     .menu-link:visited {
         color: black;
         text-decoration: none;

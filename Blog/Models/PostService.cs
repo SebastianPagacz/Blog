@@ -39,7 +39,13 @@ public class PostService
             .ToListAsync();
     }
 
-    public async Task<Post> GetPostById(int id)
+    public async Task<List<Post>> GetNonPublicPostsAsync()
+    {
+        return await _context.Posts
+            .ToListAsync();
+    }
+
+    public async Task<Post> GetPostByIdAsync(int id)
     {
         var existingPost = await _context.Posts.FindAsync(id);
 

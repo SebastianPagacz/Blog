@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Blog.Models.Entities.Post>
+@{
+	ViewData["Title"] = "Delete post";
+	Layout = "_AdminLayout";
+}
+<form method="post" asp-action="Delete">
+	<label for="PostId">Delete post</label>
+	<select name="PostId" class="form-control" asp-items="@(new SelectList(Model, "Id", "Title"))">
+
+	</select>
+
+	<input type="submit" value="Delete" class="create-button"/>
+</form>

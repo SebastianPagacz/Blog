@@ -1,0 +1,12 @@
+﻿@model Blog.Models.ViewModels.LoginViewModel
+@{
+	ViewData["Title"] = "Login Page";
+}
+<div calss="create-form-body">
+	<p>Login</p>
+	<form asp-action="Login">
+		<input asp-for="Login" class="form-label" placeholder="Username"/><br />
+		<input type="password" asp-for="Password" class="form-label" placeholder="Password" /><br />
+		<input type="submit" value="Submit"/>
+	</form>
+</div>

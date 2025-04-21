@@ -23,36 +23,25 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult Privacy()
-    {
-        return View();
-    }
-
     public async Task<IActionResult> Posts()
     {
         var result = await _postService.GetAllPostsAsync();
         return View(result);
     }
     [HttpGet]
-    public async Task<IActionResult> Create()
+    public IActionResult Login()
     {
-        var categories = await _categoryService.GetAllCategoriesAsync();
-        var viewModel = new CreatePostViewModel { Categories = categories };
-        return View(viewModel);
+        return View();
     }
-
     [HttpPost]
-    public async Task<IActionResult> Create(CreatePostViewModel model) 
+    public IActionResult Login(LoginViewModel model)
     {
-        if (ModelState.IsValid) 
-        {
-            await _postService.CreatePostAsync(model.Title, model.Content, model.Slug, model.IsPublic, model.CategoryId);
-            return RedirectToAction("Posts", "Home");
-        }
-
-        var categories = await _categoryService.GetAllCategoriesAsync();
-        model.Categories = categories;
-        return View(model);
+        return RedirectToAction("AdminIndex", "Admin");
+    }
+    [HttpGet]
+    public IActionResult LogOut() 
+    {
+        return RedirectToAction("Index", "Home");
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
